@@ -275,7 +275,8 @@
                                 <span class="input-group-text">
                                     <i class="bi bi-envelope-fill"></i> 
                                 </span>
-                                <input type="email" class="form-control" placeholder="e.g. Troy@example.com">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="e.g. Troy@example.com" required>
+
                                 <!--  tool tip  -->
                                 <span class="input-group-text">
                                     <span class="tt" data-bs-placement="bottom" title="Enter an email address we can reply to.">
@@ -294,7 +295,7 @@
                                 <span class="input-group-text">
                                     <i class="bi bi-person-fill"></i>
                                 </span>
-                                <input type="first-name" class="form-control" placeholder="Michael">
+                                <input type="text" class="form-control" id="first-name" name="first-name" placeholder="Michael" required>
                                 <!--  tool tip  -->
                                 <span class="input-group-text">
                                     <span class="tt" data-bs-placement="bottom" title="Enter your First Name.">
@@ -345,8 +346,8 @@
                             </div>
                             <div class="text-center mb-4">
                                 <input type="checkbox" class="form-check-input" id="aliveCheck">
-                                <label for="aliveCheck" class="form-check-label">Are you still alive?</label>
-                                <div class="invalid-feeback">
+                                <label for="aliveCheck" class="form-check-label">Check here if you are alive!</label>
+                                <div class="invalid-feedback">
                                     Please check here if your still alive!
                                 </div>
                             </div>
@@ -402,7 +403,18 @@
             new bootstrap.Tooltip(t)
         })
     </script>
-
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("contactForm");
+    form.addEventListener("submit", function(event) {
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        form.classList.add("was-validated");
+        });
+    });
+    </script>
     
   </body>
   </html>
